@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <!--
+        v-bind   	Connects an attribute in an HTML tag to a data variable inside the Vue instance.
+            :class :style :src
+        v-if 	    Creates HTML tags depending on a condition. Directives v-else-if and v-else are used together with the v-if directive.
+        v-show   	Specifies if an HTML element should be visible or not depending on a condition.
+        v-for   	Creates a list of tags based on an array in the Vue instance using a for-loop.
+        v-on 	    Connects an event on an HTML tag to a JavaScript expression or a Vue instance method. 
+        v-model 	Used in HTML forms with tags like <form>, <input> and <button>. Creates a two way binding between an input element and a Vue instance data property.
+    -->
+
+
+
+    <!-- Interpolacion de variables (el script normalmente sera aparte)-->
+    <div id="app1"> {{ variable }}</div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    variable: "hola desde variable vue"
+                }
+            }
+        });
+        app.mount("#app1");
+    </script>
+
+
+
+    <!-- Bind una clase a travez de vue
+            v-bind:class o  :class
+            v-bind:src   o  : src
+            v-bind:style    :style    -->
+    <style>
+        .clase1 {
+            background-color: aqua;
+        }
+    </style>
+    <div id="app2">
+        <div v-bind:class="clase_vue">En el futuro veremos el verdadero alcance de esto</div>
+    </div>
+    <script>
+        const app2 = Vue.createApp({
+            data() {
+                return {
+                    clase_vue: 'clase1'
+                }
+            }
+        });
+        app2.mount('#app2');
+    </script>
+
+
+
+    <!-- v-bind:src para unir un link-->
+    <div id="app3">
+        <!--<img v-bind:src="ruta"> o mas facil-->
+            <img :src="ruta">
+    </div>
+    <script>
+        const app3 = Vue.createApp({
+            data() {
+                return {
+                    ruta:'https://www.w3schools.com/vue/img_beach3.jpg'
+                }
+            }
+        });
+        app3.mount('#app3');
+    </script>
+
+
+    <!-- Bind un style -->
+    <style>
+        #app4 div {
+          width: 200px;
+          padding: 20px;
+          border: dashed black 1px;
+          background-color: lightcoral;
+        }
+      </style>
+      <div id="app4">
+            <!--<div v-bind:style="{ 'background-color':color}">-->
+                <div :style="{ 'background-color':color}">
+                Algo aqui muy complicado de mas 
+            </div>
+      </div>
+      <script>
+        const app4 = Vue.createApp({
+            data(){
+                return {
+                    color:'green'
+                }
+            }
+        });
+        app4.mount('#app4');
+      </script>
+</body>
+
+</html>

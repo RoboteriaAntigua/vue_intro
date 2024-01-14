@@ -1,0 +1,75 @@
+#Iniciar proyecto vue
+    npm init vue@version
+    npm init vue@latest
+    cd proyecto
+    npm install
+    npm run dev
+
+# Con vue/cli (errores que solucionar y lenteja)
+    npm install -g @vue/cli
+    vue create nombre
+
+#Single File Components (SFCs) or .vue
+    All *.vue files only consist of three parts:
+        <template> where the HTML content is.
+        <script> for our Vue code.
+        <style> where we write the CSS styling.
+
+#Options api vs composition api
+    Hasta la version 3, veniamos con option api. El cual hay que poner los metodos y las variables en ciertas partes
+    como venimos haciendo, a partir de la version 3 ya podemos usar el composition api el cual tiene
+    una sintaxis mucho mas elegante, pero demanda usar SFCs.
+
+
+#Proyecto limpio: borrar 
+    las carpetas assets y components, 
+    borrar todo el contenido de app.vue,
+    borrar en main.js el  import './assets/main.css'
+
+#Primer componente:
+    1- src/primer componente
+    2 -Todo componente contiene: <template>, <script> and <style> tags
+    3 -En app.js:
+                import PrimerComponente from './components/PrimerComponente.vue'
+                const app = createApp(App)
+                app.component('primer-componente', PrimerComponente)
+                app.mount('#app')
+    4. En App.vue lo usamos
+        <primer-componente />
+
+#segundo componente: ContadorClicks
+
+#props (enviar data al componente):
+            recibeProp.vue
+
+#props booleano: (ver propBoolean)
+
+#for en componentes:
+        FoodItem
+
+# Enviar data de componente hijo a padre: emit
+        ver componente (emit.vue) 
+        En resumen el js:
+                hijo:   
+                        data(){return{example:'algo de info del hijo'}},
+                        methods: { 
+                                handleClick() {
+                                    //El primer parametro el evento el segundo cierta data
+                                     this.$emit("hacer",this.example); } 
+                                    } 
+                                } 
+
+                padre:  
+                        data(){return {variable=""}},
+                        methods: {
+                                handleClick (example) {                 //metodo identico en el hijo, evento recibido de hijo a padre
+                                  this.variable=example;
+                                }
+        En resumen el template:
+                hijo:
+                        <template> 
+                            <button @click="handleClick">{{text}}</button> 
+                        </template>
+                padre:
+                          <compo-hijo @hacer="handleClick"></compo-hijo>
+                          <p> Recibiendo info del hijo: {{ variable }}</p>

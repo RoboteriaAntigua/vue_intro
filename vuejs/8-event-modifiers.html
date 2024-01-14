@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    <!--Keyboard modifiers
+        Se trata de ciertos eventos que se disparan cuando apretamos cierta tecla o combinacion de letras
+        util para juegos-->
+
+        <!--Regla general:
+                @keydown.[tecla]-->
+
+        <!-- Evento al presionar la letra s-->
+        <div id="app1">
+            <textarea cols="20" rows="3" @keydown.s="metodo1" placeholder="aguardandoo"></textarea>
+        </div>
+        <script>
+            const app1 = Vue.createApp({
+                methods: {
+                    metodo1(){
+                        alert('apretaste la tecla s')
+                    }
+                }
+            })
+            app1.mount('#app1')
+        </script>
+
+         <!-- Combinacion de teclas (shift+t)-->
+         <div id="app2">
+            <textarea cols="20" rows="3" @keydown.shift.t="metodo1" placeholder="aguardandoo"></textarea>
+        </div>
+        <script>
+            const app2 = Vue.createApp({
+                methods: {
+                    metodo1(){
+                        alert('apretaste shift+t')
+                    }
+                }
+            })
+            app2.mount('#app2')
+        </script>
+
+
+        <!--Mouse modifiers-->
+        <!--
+             we can write v-on:click, but to specify which mouse button that was clicked,
+             we can use:
+              .left
+              .center 
+              .right 
+                -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <!-- Watchers
+            Son metodos que estan mirando todo el tiempo a una variable en data con su mismo nombre,
+            y corren cuando esta cambia-->
+
+    <!--
+            const app = Vue.createApp({
+                              template: 
+                                ...
+                              ,
+                              data() {
+                                ...
+                              },
+                              watch: {
+                                ...
+                              },
+                              computed: {
+                                ...
+                              },
+                              methods: {
+                                ...
+                              }
+                            })
+        -->
+
+
+    <!-- Ejemplo un Rango de valores (0 a 50 mil), el cual no permite elijir montos menores de 1000-->
+
+    <div id="app1">
+        <input type="range" min="0" max="500000" step="100" v-model="rangeVal">
+        <p>{{rangeVal}}</p>
+    </div>
+
+    <script>
+        const app1 = Vue.createApp({
+            data(){
+                return {
+                    rangeVal:2500
+                }
+            },
+            watch: {
+                rangeVal(val){
+                    if(val<1000){
+                        this.rangeVal=1000;
+                    }
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+
+</body>
+
+</html>

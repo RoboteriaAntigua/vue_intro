@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    <style>
+        .caja {
+            border: 1px solid black;
+            width: 300px;
+            height:200px;
+        }
+    </style>
+
+    <!-- Al pasar el mouse vemos la posicion del mouse adentro del div en eje de coordenadas x e y
+        expresados en pixeles, como la caja es de 300 por 200 veremos esos rangos-->
+
+    <div id="app1">
+        <p>Mover el mouse por aqui</p>
+        <div class="caja" @mousemove="metodoPosicion">
+            <span>eje x: {{x}}</span><br>
+            <span>eje y: {{y}}</span>
+        </div>
+    </div>
+    <script>
+        const app1 = Vue.createApp({
+            data() {
+                return {
+                    x:0,
+                    y:0
+                }
+            },
+            methods: {
+                metodoPosicion(event){
+                    this.x= event.offsetX,
+                    this.y=event.offsetY
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+</body>
+</html>

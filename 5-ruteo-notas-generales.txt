@@ -1,0 +1,24 @@
+##################################### ruteo con vue #####################################
+
+#instalar the vue rounting library
+    npm install vue-router@version  (version 4 en este caso)
+
+# main.js o router.js
+
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+        { path: '/animals', component: AnimalCollection },
+        { path: '/food', component: FoodItems },
+    ]
+});
+const app = createApp(App);
+app.use(router);
+app.mount('#app')
+
+# app.vue
+<router-link to="/animals">Animals</router-link>
+<router-link to="/food">Food</router-link><br>
+<router-view></router-view>

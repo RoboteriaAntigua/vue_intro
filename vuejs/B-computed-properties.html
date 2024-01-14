@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    
+    <!-- Computed properties 
+            Es la tercer opcion de configuaracion de una instancia de app Vue. 
+            Las primeras dos fueron data y methods-->
+   
+    <!--
+    Computed properties and methods are both written as functions, but they are different:
+
+        Methods runs when called from HTML, but computed properties updates automatically when a dependency change.
+        Computed properties are used the same way we use data properties, but they are dynamic.
+
+    -->
+
+    <div id="app1">
+        esta tildado? : <input type="checkbox" v-model="bulo"> {{bulo}}<br>
+        {{metodo_auto}}
+    </div>
+    <script>
+        const app1 = Vue.createApp({
+            data(){
+                return {
+                    bulo:false
+                }
+            },
+            computed:{
+                //Metodo que se ejecuta automaticamente frente a cualquier cambio de estado de la variable 'bulo'
+                metodo_auto(){          
+                    if(this.bulo){
+                        return 'texto agregado automaticamente a un cambio de estado'
+                    }else{return 'es falso todo lo dicho'}
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+</body>
+</html>

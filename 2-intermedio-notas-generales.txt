@@ -1,0 +1,30 @@
+#ambito de los estilos
+    Todo lo defino en <style> en cualquier componente es de ambito global a menos que se defina asi:
+    <style scoped>
+
+#ambito de los componentes:
+    Hasta ahora (so far) los componente definidos en en main.js son de ambito global, 
+    pero si queremos que sean locales, tendriamos que incluirlos en el script del componente padre.
+    Componente padre:
+                    <script> 
+                      import CompHijo from './components/CompHijo.vue';
+
+                      export default {
+                        components: {
+                          'comp-hijo': CompHijo
+                        }
+                      }
+                    </script>
+
+# slot (ver slotComponent)
+  1 -html de hijo a padre, 
+  2 -html padre a hijo,
+  3 -varios slots
+  4 -Tambien se puede usar la directiva v-slot en el tag <template> Para bastante codigo
+  5 -Shorthand para v-slot es #
+  6 -slot enviar info js de hijo a padre muy facil
+
+
+# build (terminar el proyecto)
+  npm run build (usa vite por defecto)
+  Los .js .css que crea los guarda en assets/

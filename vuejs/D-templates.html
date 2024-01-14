@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+
+    <!--
+    All *.vue files only consist of three parts:
+
+    <template> where the HTML content is.
+
+    <script> for our Vue code.
+
+    <style> where we write the CSS styling  -->
+
+    <!-- Templates-->
+    <div id="app1">
+        Aver:
+    </div>
+    <script>
+        const app1= Vue.createApp({
+            template: 
+                `<h1>Renderizando codigo con vue</h1>
+                    <p>Creo que esto es mas como la parte html de un componente</p>
+                    {{ mensaje}} `,
+            data (){
+                return {
+                    mensaje:'hola soy un mensaje'
+                }
+            }   
+        })
+        app1.mount('#app1')
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    
+    <!--Los metodos pueden (entre otras cosas) vincular un evento con una funcion-->
+
+    <!--Evento + metodo-->
+    <div id="app1">
+        <button @click="metodo1">apretame</button>
+        <p> {{ text }}</p>
+    </div>
+    
+    <script>
+        const app1 = Vue.createApp({
+            data(){
+                return {
+                    text:''
+                }
+            },
+            methods: {
+                metodo1(){
+                    this.text='cambiando en texto'
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+
+    <!-- Pasando argumentos a los metodos-->
+    <div id="app2">
+        <button @click="metodo1(55)">apretame</button>
+        <p> {{ text }}</p>
+    </div>
+    
+    <script>
+        const app2 = Vue.createApp({
+            data(){
+                return {
+                    text:0
+                }
+            },
+            methods: {
+                metodo1(par1){
+                    this.text=par1
+                }
+            }
+        })
+        app2.mount('#app2')
+    </script>
+</body>
+</html>

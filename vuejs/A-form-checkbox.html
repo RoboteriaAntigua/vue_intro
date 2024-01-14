@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    
+    <!-- Ejemplo de uso de checkbox con v-model-->
+    <div id="app1">
+        Bolivia: <input type="checkbox" v-model="valorBolivia" >
+        Peru: <input type="checkbox" v-model="valorPeru">
+        Chile: <input type="checkbox" v-model="valorChile">
+        <p v-if="valorBolivia">Es bolivia</p>
+        <p v-if="valorPeru">Es peru</p>
+        <p v-if="valorChile">Es chile</p>
+        
+    </div>
+
+    <script>
+        const app1=Vue.createApp({
+            data(){
+                return {
+                    valorBolivia:false,
+                    valorPeru:false,
+                    valorChile:false,
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+</body>
+</html>

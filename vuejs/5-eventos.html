@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    <!--Evento sencillo
+        shorthand v-on:click puede hacerse @click-->
+    <div id="app1">
+        <p>{{count}}</p>
+        <button v-on:click="count++">aumentar</button>
+    </div>
+    <script>
+        const app1 = Vue.createApp ({
+            data(){
+                return {
+                    count:0
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+
+    <!--Consultar todos los eventos en carpeta javascript 
+        Ejemplos de algunos que me parecen utiles:
+                · focus
+                · blur 
+                · toggle
+                · dblclick
+                · change        (el contenido de un form cambia)
+                · mouseenter
+                · mouseleave-->
+    
+    <!-- focus and blur (toggle hace otra cosa)-->
+    <div id="app2">
+        <p>aver: {{mensaje}}</p>
+        <input  v-on:focus="mensaje='en foco'" 
+                v-on:blur="mensaje='bluuur'"
+                type="text" />
+    </div>
+    <script>
+        const app2 = Vue.createApp({
+            data(){
+                return {
+                    mensaje:"que c yo"
+                }
+            }
+        })
+        app2.mount('#app2')
+    </script>
+
+     <!-- mouseenter and mouseleave con shorhand @-->
+    <div id="app3">
+        <p>aver: {{mensaje}}</p>
+        <input  @mouseenter="mensaje='adentro'"
+                @mouseleave="mensaje='afuera'"
+                type="text" />
+    </div>
+    <script>
+        const app3 = Vue.createApp({
+            data(){
+                return {
+                    mensaje:"mouseenter o leave?"
+                }
+            }
+        })
+        app3.mount('#app3')
+    </script>
+</body>
+</html>

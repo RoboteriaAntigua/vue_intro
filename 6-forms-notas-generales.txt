@@ -1,0 +1,3 @@
+################# utiles como unica seleccion en checkbox, manejo dinamico de select etc
+# validaciones
+https://www.w3schools.com/vue/vue_form-inputs.php

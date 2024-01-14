@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- 3 formas en las que es usado el for en vue-->
+
+    <!-- Renderizado de listas -->
+    <div id="app1">
+        <li v-for="x in arreglon">· {{x}}</li>
+    </div>
+    <script>
+        const app1 = Vue.createApp({
+            data(){
+                return {
+                    arreglon: [
+                        'uno',
+                        'dos',
+                        'tres','4 patitos',
+                        '?conseguire',
+                        'seguro que no'
+                    ]
+                }
+            }
+        })
+        app1.mount('#app1')
+    </script>
+
+    <!-- v-for and v-bind:src para crear listas de imagenes-->
+    <style>img {width: 200px;}</style>
+    <div id="app2">
+        <div>
+            <img v-for="x in imagenes" v-bind:src="x">
+        </div>
+    </div>
+    <script>
+        const app2 = Vue.createApp({
+            data(){
+                return {
+                    imagenes: [
+                    'https://www.w3schools.com/vue/img_salad.svg',
+                    'https://www.w3schools.com/vue/img_cake.svg',
+                    'https://www.w3schools.com/vue/img_soup.svg',
+                    'https://www.w3schools.com/vue/img_burrito.svg'
+                    ]
+                }
+            }
+        })
+        app2.mount('#app2');
+    </script>
+
+<!-- for para recorrer arreglo de objetos
+        En este caso imagenes y textos-->
+        <style>
+            figure {
+      width: 200px;
+      padding: 10px;
+      margin: 10px;
+      background-color: lightskyblue;
+      border-radius: 5px;
+    }
+    figcaption {
+      text-align: center;
+    }
+        </style>
+
+        <div id="app3">
+            <figure v-for="x in objetos">
+                <img :src="x.url">
+                <figcaption> {{x.name}} </figcaption>
+            </figure>
+        </div>
+        <script>
+            const app3 = Vue.createApp({
+                data(){
+                    return {
+                        objetos:[
+                        { name: 'algo', url: 'https://www.w3schools.com/vue/img_salad.svg'}, 
+                        { name: 'algo', url: 'https://www.w3schools.com/vue/img_cake.svg'}, 
+                        { name: 'algo', url: 'https://www.w3schools.com/vue/img_soup.svg'}, 
+                        { name: 'algo', url: 'https://www.w3schools.com/vue/img_burrito.svg'} 
+                        ]
+                    }
+                }
+            })
+            app3.mount('#app3')
+        </script>
+        
+        <!--Obtener en indice de la iteracion-->
+        <div id="app4">
+            <li v-for="(x,index) in arreglete"> {{index}}: {{x}}</li>
+        </div>
+        <script>
+            const app4 = Vue.createApp({
+                data(){
+                    return {
+                        arreglete: ['lala','tete','coco','la novia de coco']
+                    }
+                }
+            })
+            app4.mount('#app4')
+        </script>
+</body>
+</html>

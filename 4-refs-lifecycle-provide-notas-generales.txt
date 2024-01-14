@@ -1,0 +1,62 @@
+##################### ref #################################
+    Es una forma vue de acceder al dom sin recargar (dom virtual)
+    en lugar de id se usa ref 
+        <div ref="ref1"></div>
+
+    en lugar document.getElementById('id1'); se usa $refs.
+        this.variable =this.$refs.ref1.value
+        this.$refs.ref2 = this.$refs.input1.value; etc
+
+
+############################# ciclo de vida ######################################
+    Cada vez que un componente alcanza un nuevo estado en el ciclo de vida, corre una funcion especifica,
+    aqui pòdemos enganchar codigo (hook=codigo)
+
+    beforeCreate        -> antes de que el componente se inicialize 
+    created             -> El componente ya se ha creado pero no montado, util para fecth, initial data etc.
+    beforeMount         -> Todavia no se agrega el componente al dom
+    mounted             -> Por fin se ha montado el componente y podemos usar el dom como xej usar ref $ref
+    beforeUpdate        -> Un antes-de-actualizar es necesario para no caer en un ciclo infinito.
+    updated             -> Es cuando alguna data es modificada.
+    beforeUnmount       -> Justo antes de que un componente sea borrado del dom
+    unmounted           -> despues de que un componente es borrado del dom
+    errorCaptured       -> Se dispara cuando un error ocurre en un hijo
+    renderTracked
+    renderTriggered
+    activated           -> CUando un componente es agregado o borrado, pero no del dom, por ejemplo: <KeepAlive>
+    deactivated
+    serverPrefetch      -> Es para ssr (server side rendering)
+
+
+############################# provide inject data #####################################
+    Una forma de comunicar data entre componentes.
+
+# provide es para que cierta data quede disponible para injectar en cualquier componente:
+    <script>
+    export default {
+      data() {
+        return {
+          activeComp: 'food-about',
+          foods: [
+            { name: 'Pizza', imgUrl: '/img_pizza.svg' },
+            { name: 'Apple', imgUrl: '/img_apple.svg' },
+            { name: 'Cake', imgUrl: '/img_cake.svg' },
+            { name: 'Fish', imgUrl: '/img_fish.svg' },
+            { name: 'Rice', imgUrl: '/img_rice.svg' }
+          ]
+        }
+      },
+      provide() {
+        return {
+          foods: this.foods
+        }
+      }
+    }
+    </script>
+
+#inject es para injectar esa data en cualquier componente:
+    <script>
+    export default {
+        inject: ['foods']
+    }
+    </script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+
+    <!--Los condicionales crean el elemento html si es true-->
+    <div id="app1">
+        a ver si es true:
+        <p v-if="bandera">
+            si bandera es true
+        </p>
+        <p v-else>
+            si bandera es false
+        </p>
+    </div>
+
+    <script>
+        const app1= Vue.createApp({
+            data(){
+                return {
+                    bandera: true
+                }
+            }
+        });
+        app1.mount('#app1');
+    </script>
+
+    <!-- Otro ejemplo mas numerico-->
+    <div id="app2">
+        otro mas numerico:
+        <div v-if="valor>5">
+            Hay mas de 5
+        </div>
+        <div v-else>
+            Son menos de 5
+        </div>
+    </div>
+    <script>
+        const app2 = Vue.createApp({
+            data(){
+                return {
+                    valor:6
+                }
+            }
+        });
+        app2.mount('#app2');
+    </script>
+    
+    <!-- Si el texto incluye cierta palabra-->
+    <div id="app3">
+        <p v-if="text.includes('pizza')">The text includes the word 'pizza'</p>
+        <p v-else>The word 'pizza' is not found in the text</p>
+    </div> 
+    <script>
+        const app3 = Vue.createApp({
+            data(){
+                return {
+                    text:'aqui una frase que contiene la palaba pizza'
+                }
+            }
+        });
+        app3.mount('#app3');
+    </script>
+
+</body>
+</html>

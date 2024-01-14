@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.global.js"></script>
+</head>
+<body>
+    
+    <!-- Formulario reactivo simple v-model-->
+<div id="app1">
+    <input v-model="name">
+    <input v-model="valor">
+    <p>El nombre es {{name}} y el precio: {{valor}}</p>
+</div>
+<script>
+    const app1 = Vue.createApp({
+        data(){
+            return {
+                name:null,
+                precio:null
+            }
+        }
+    })
+    app1.mount('#app1')
+</script>
+
+
+<!--Ejemplo completo (carrito), se cargan una lista de productos y cantidad-->
+<h1>Example list of shoping</h1>
+<div id="app2">
+    <!--Evento submit dispara el metodo add_item 
+        el modifier prevent es para no perder la data recargando el navegador mientras-->
+    <form @submit.prevent="add_item()">                                        
+        <p>Producto</p><input type="text" v-model="producto">
+        <p>Cantidad</p><input type="number" v-model="cantidad">
+        <input type="submit" value="cargar al carrito">
+    </form>
+    
+    <div>
+        Tu carrito:
+        <ul>
+            <li v-for="item in carrito">{{item.nombre}} : {{item.numero}}</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    const app2=Vue.createApp({
+        data(){
+            return {
+                producto:null,
+                cantidad:null,
+                carrito: []
+            }
+        },
+        methods: {
+            add_item(){
+                let item = {nombre:this.producto,numero:this.cantidad}
+                this.carrito.push( item )
+            }
+        }
+    })
+    app2.mount('#app2')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# primera aproximacion al patron de diseño 'state'
+
+# Estado
+    Es la fuente de la verdad que impulsa nuestra aplicacion
+
+# vista
+    Es un mapeo declaritivo del estado
+    Aqui estan las entradas del usuario
+
+# Acciones
+    Son las posibles formas en las que el estado puede cambiar en respuesta a las entradas del usuario(vista)
+    Tambien puedo conseguir recurzos de un backend api por ejemplo.
