@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+
 import App from './App.vue'
 
 //importo mi primer componente
@@ -19,6 +20,9 @@ import FoodItem from './components/FoodItem.vue'
 //Componente ejemplo para emit data de hijo a padre
 import emit from './components/emit.vue'
 
+//Otro componente que envia data al padre
+import hijo from './components/hijo.vue'
+
 const app = createApp(App);
 app.component('PrimerComponente',PrimerComponente);
 app.component('contador-clicks', ContadorClicks);
@@ -26,4 +30,5 @@ app.component('recibe-prop',recibeProp);
 app.component('prop-boolean',propBoolean);
 app.component('food-item',FoodItem);
 app.component('emit',emit);
+app.component('hijo',hijo);
 app.mount('#app');

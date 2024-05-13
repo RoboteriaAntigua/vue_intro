@@ -22,7 +22,8 @@ export default {
     }, 
     methods: { 
         handleClick() {
-             this.$emit("hacer",this.example); } //El primer parametro el evento el segundo cierta data
+             this.$emit("hacer",this.example); 
+                } //El primer parametro el evento el segundo cierta data
             }                                    // ambos evento y example van al padre (app.vue)
         } 
 </script>
